@@ -2,6 +2,7 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -61,12 +62,12 @@ function init() {
     const askUser = async () => {
         try {
             const userReponse = await inquirer.prompt(questions)
+            generateMarkdown(userReponse);
             console.log(userReponse);
         } catch (err) {
             console.log(err);
         }
     }
-    askUser();
 }
 
 // Function call to initialize app
