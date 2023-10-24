@@ -55,7 +55,12 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile('README.md', data, (err) => {
+        if (err) console.log(err);
+        console.log('The file has been saved!');
+    })
+};
 
 // TODO: Create a function to initialize app
 function init() {
@@ -64,6 +69,7 @@ function init() {
             const userReponse = await inquirer.prompt(questions)
             // const fileData = await fs.promises.writeFile('README.md', generateMarkdown(userReponse));
             console.log(userReponse);
+            writeToFile('README.md', generateMarkdown(userReponse));
         } catch (err) {
             console.log(err);
         }
