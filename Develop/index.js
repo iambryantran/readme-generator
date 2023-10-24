@@ -62,12 +62,13 @@ function init() {
     const askUser = async () => {
         try {
             const userReponse = await inquirer.prompt(questions)
-            generateMarkdown(userReponse);
+            // const fileData = await fs.promises.writeFile('README.md', generateMarkdown(userReponse));
             console.log(userReponse);
         } catch (err) {
             console.log(err);
         }
     }
+    askUser();
 }
 
 // Function call to initialize app
